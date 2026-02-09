@@ -153,4 +153,11 @@
     }));
 
     runAsync().start();
+        // 🔊 Audio al primer click
+    var audio = document.getElementById("media");
+
+    document.addEventListener("click", function () {
+        audio.play();
+    }, { once: true });
+
 })();
