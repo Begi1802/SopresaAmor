@@ -33,26 +33,31 @@ $(window).resize(function () {
 })(jQuery);
 
 function timeElapse(date) {
-    var current = new Date(); // ← CORREGIDO
-	current.setHours(current.getHours() - 1);
-    var seconds = (current.getTime() - date.getTime()) / 1000;
+    var current = new Date(); // Usamos la hora actual exacta
+    var targetDate = new Date(2025, 8, 14);
+    // Calcular diferencia en segundos
+    var seconds = Math.floor((current.getTime() - targetDate.getTime()) / 1000);
 
+    // Calcular unidades de tiempo
     var days = Math.floor(seconds / (3600 * 24));
     seconds = seconds % (3600 * 24);
 
     var hours = Math.floor(seconds / 3600);
-    if (hours < 10) hours = "0" + hours;
-
     seconds = seconds % 3600;
+
     var minutes = Math.floor(seconds / 60);
-    if (minutes < 10) minutes = "0" + minutes;
+    seconds = seconds % 60;
 
-    seconds = Math.floor(seconds % 60);
-    if (seconds < 10) seconds = "0" + seconds;
+    // Formatear la salida (añadir ceros a la izquierda si es necesario)
+    var dStr = days;
+    var hStr = (hours < 10) ? "0" + hours : hours;
+    var mStr = (minutes < 10) ? "0" + minutes : minutes;
+    var sStr = (seconds < 10) ? "0" + seconds : seconds;
 
-    var result = " <span class=\"digit\">" + days + "</span> días " +
-        "<span class=\"digit\">" + hours + "</span> horas " +
-        "<span class=\"digit\">" + minutes + "</span> minutos " +
-        "<span class=\"digit\">" + seconds + "</span> segundos";
+    var result = " <span class=\"digit\">" + dStr + "</span> días " +
+                 "<span class=\"digit\">" + hStr + "</span> horas " +
+                 "<span class=\"digit\">" + mStr + "</span> minutos " +
+                 "<span class=\"digit\">" + sStr + "</span> segundos";
+    
     $("#clock").html(result);
 }
