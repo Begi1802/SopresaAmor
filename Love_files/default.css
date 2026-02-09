@@ -37,6 +37,10 @@ a {
 	position: absolute;
 }
 
+.ask {
+	margin-right: 100px;
+}
+
 #code {
 	display: none;
 	font-size: 28px;
@@ -86,4 +90,7 @@ a {
 
 .space {
 	margin-right: 150px;
+}
+.space2 {
+	margin-right: 100px;
 }
