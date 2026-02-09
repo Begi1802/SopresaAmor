@@ -54,6 +54,12 @@
     var hold = 1;
 
     canvas.click(function (e) {
+
+           var audio = document.getElementById("media");
+    if (audio && audio.paused) {
+        audio.play();
+    }
+
         var offset = canvas.offset(), x, y;
         x = e.pageX - offset.left;
         y = e.pageY - offset.top;
